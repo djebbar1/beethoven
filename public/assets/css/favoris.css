@@ -1,0 +1,70 @@
+
+html,
+/*
+body {
+  position: relative;
+  height: 100%;
+}
+*/
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+ 
+}
+
+swiper-container {
+  width: 400px;
+  height: 300px;}
+
+swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+ 
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+}
+.swiper-button-prev::after, :host(.swiper-rtl) .swiper-button-prev::after{
+  margin-top: 500px;
+}
+.swiper-button-next::after, .swiper-button-prev::after{
+  padding-top: 500px;
+}
+.card {
+  height: 180px;
+}
+/*
+.audio {
+  margin-bottom: -20px;
+}*/
+
+
+.heart{
+  position: relative;
+}
+
+.heart i{
+  position:absolute;
+  
+  right: 20Px;
+  color:red;
+}
+
+.heart i:hover{
+  color: blue;
+  top: 30px;
+}
+
+  /*
+  .mySwiper{
+    
+    background-position: center;
+  }*/
+  
+ 

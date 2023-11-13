@@ -19,7 +19,7 @@ class Categories
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Music::class)]
-    private Collection $musique;
+    private ?Collection $musique;
 
     public function __construct()
     {
@@ -71,7 +71,7 @@ class Categories
                 $musique->setCategorie(null);
             }
         }
-
+        
         return $this;
     }
 

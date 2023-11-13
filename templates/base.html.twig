@@ -10,35 +10,60 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer /></script>
+   
 
-
-  
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->   
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/music.css') }}" rel="stylesheet">
+    
+    
+    
 </head>
-<body>
+<body >
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href=" {{ path('home')}} ">Musiques</a>
+        <a class="navbar-brand" href=" {{ path('home')}} ">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href=" {{path('app_categories')}} ">Catégories</a>
+                    <a class="nav-link" href=" {{path('app_music')}} ">Musiques</a>
                 </li>
+            {% if app.user is not null %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Favoris</a>
+                    <a class="nav-link" href="{{path('app_favoris')}}">Favoris</a>
                 </li>
+                {% endif %}
                 <li class="nav-item active">
                     <a class="nav-link" href="#" tabindex="-1">Genres</a>
                 </li>
+                <li class="nav-item dropdown active">
+              
+                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
+                  
+                        <a class="nav-link dropdown-toggle" href=" {{path('app_categories')}} " aria-expanded="false" data-bs-toggle="dropdown">
+                            Catégories
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            {% for categories in categorie %}
+                            
+                            <a href="{{path('app_categories')}} "><li class="dropdown-item text-black mt-0 name" >{{categories.name}}</li> </a>
+                            
+                            {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                    </li>
             </ul>
+        </div>
             <!--<form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Votre recherche" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
@@ -53,51 +78,8 @@
     </nav>
 </header>
 
-<main role="main">
-    {% if block('carousel') is defined %}
-        <swiper-container class="mySwiper" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
-            slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100"
-            coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true">
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-           
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-            <swiper-slide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-            <p class=""></p>
-            </swiper-slide>
-        </swiper-container>
-
-        
-    {% endif %}
+<main class="corps" role="main">
+    
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -112,15 +94,16 @@
 
     <!-- FOOTER -->
     <footer class="app_footer">
-        <p>
-            &copy; 2003-2023 Musiques<br/> 
-            <small>La musique qui vous fera dancé...<br/>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a></small>
+        <div class="ft row">
+            <p class="fott">
+            <span class="fot col">&copy; 2003-2023 Musiques</span> <br/> 
+            <span class="foot row"><a class="priv" href="#">Privacy</a> 
+           <a class="term" href="#">Terms</a></span></small></p>
+           <span class="fooot col"><h3> La musique qui vous fera dancer...</h3></span><br/>
+            
         </p>
     </footer>
 </main>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>

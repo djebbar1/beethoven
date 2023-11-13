@@ -1,16 +1,39 @@
-.navbar, .navbar a{
-    color: white;   
+.body{
+  position: relative;
 }
-a{
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.app_footer{
-    text-align: center;
-    position: fixed;
-    bottom: 0;   
-    width: 100%;
-    background-color: #dfeaff;
-    padding: 15px;
+swiper-container {
+  width: 100%;
+  padding-top:10px;
+  padding-bottom: 10px;
 
+  
+}
+
+swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 400px;
+  scrollbar-width: none;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.heart{
+  position: relative;
+}
+
+.heart i{
+  position:absolute;
+  
+  right: 20Px;
+  color:red;
+}
+
+.heart i:hover{
+  color: blue;
+  top: 30px;
 }

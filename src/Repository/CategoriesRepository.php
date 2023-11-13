@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Categories;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\BrowserKit\Request;
 
 /**
  * @extends ServiceEntityRepository<Categories>
@@ -20,6 +21,20 @@ class CategoriesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Categories::class);
     }
+
+    //public function index(Request $request)
+    //{
+       // $categories = $this->EntityManager->getRepository(Categorie::class)->findAll();
+        //$btn = new btn();
+        //$btn = $this->c
+    //}
+
+    public function Categories()
+    {
+        $categories=[];
+       return $this->render('index.html.twig', ['categories' => $categories]);
+    }
+
 
     public function save(Categories $entity, bool $flush = false): void
     {

@@ -1,0 +1,45 @@
+
+body{
+    background-color: rgb(183, 181, 181);
+    
+    background-image: url('../image_site/instr.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}    
+h1{
+    color: rgb(123, 102, 102);
+}
+.container{
+    margin-top: 100px;
+    width: 500px;
+    position: absolute;
+    left: 400px;
+    top: 40px;
+    color: rgb(255, 0, 0);
+    /*display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    background-color: rgb(232, 232, 232);
+    */
+    padding-left: 15px;
+}
+.navbar, .navbar a{
+    color: white;   
+}
+a{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.btn{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+h1{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

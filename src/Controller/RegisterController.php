@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+
+use App\Entity\Categories;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,8 +23,10 @@ class RegisterController extends AbstractController
     }
     #[Route('/inscription', name: 'app_register')]
     public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
-    {
 
+    
+    {
+        $categorie = $this->entityManager->getRepository(Categories::class)->findAll();
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
@@ -38,7 +42,8 @@ class RegisterController extends AbstractController
         }
 
         return $this->render('register/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categorie' => $categorie
         ]);
     }
 }

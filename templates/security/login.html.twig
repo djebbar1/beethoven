@@ -3,7 +3,7 @@
 {% block title %}Se connecter - Music{% endblock %}
 
 {% block content %}
-<form method="post">
+<form clss="form" method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -14,6 +14,7 @@
         </div>
     {% endif %}
 
+    <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
     <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
     <label for="inputEmail">Votre email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Votre adresse email" required autofocus>

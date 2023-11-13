@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegisterType extends AbstractType
 {
@@ -53,21 +54,20 @@ class RegisterType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe et la cobnfirmation doivent être identique.',
+                'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
                 'label' => 'Votre mot de passe',
-                'constraints' => new Length([
-                    'min' => 8,
-                    'max' => 30
-                ]),
+                'constraints' => [
+                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', "Il faut un mot de passe de 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial")
+            ],
                 'required' => true,
                 'first_options' => [ 'label' => 'Mot de passe', 
                 'attr' => [
                     'placeholder' => 'Merci de saissir votre mot de passe'
                 ] 
             ],
-                'second_options' => [ 'label' => 'Confirmez votre mot de pssse', 
+                'second_options' => [ 'label' => 'Confirmez votre mot de passe', 
                 'attr' => [
-                    'placeholder' => 'Merci de confirmez votre mot de pssse'
+                    'placeholder' => 'Merci de confirmez votre mot de passe'
                 ] ]
             ])
            

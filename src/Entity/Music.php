@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MusicRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,22 @@ class Music
 
     #[ORM\ManyToOne(inversedBy: 'musique')]
     private ?Categories $categorie = null;
+
+    #[ORM\ManyToMany(targetEntity: Favoris::class, mappedBy: 'music')]
+    private Collection $favoris;
+
+    #[ORM\ManyToMany(targetEntity: Home::class, mappedBy: 'music')]
+    private Collection $homes;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favorite')]
+    private Collection $favorite;
+
+    public function __construct()
+    {
+        $this->favoris = new ArrayCollection();
+        $this->homes = new ArrayCollection();
+        $this->favorite = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +108,84 @@ class Music
     public function setCategorie(?Categories $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favoris>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Favoris $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris->add($favori);
+            $favori->addMusic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            $favori->removeMusic($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Home>
+     */
+    public function getHomes(): Collection
+    {
+        return $this->homes;
+    }
+
+    public function addHome(Home $home): self
+    {
+        if (!$this->homes->contains($home)) {
+            $this->homes->add($home);
+            $home->addMusic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHome(Home $home): self
+    {
+        if ($this->homes->removeElement($home)) {
+            $home->removeMusic($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(User $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite->add($favorite);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(User $favorite): self
+    {
+        $this->favorite->removeElement($favorite);
 
         return $this;
     }

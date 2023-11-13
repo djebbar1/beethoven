@@ -1,18 +1,60 @@
-swiper-container {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-top: 30px;
-  }
+body{
+  position: relative;
+}
+.navbar, .navbar a{
+  color: white;   
+  text-decoration: none; 
+}
 
-  swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-  }
+a{
+  margin-right: 10px;
+  margin-left: 10px;
+  text-decoration-style: none;
+}
+.corps{
+  height: 100vh;
+  padding-top: 10px;
+  margin-bottom: 200px;
+}
+.app_footer{
+  text-align: center;
+  position: fixed;
+  bottom: 0px;   
+  width: 100%;
+  background-color: #dfeaff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
-  swiper-slide img {
-    display: block;
-    width: 100%;
-  }
+.fott{
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+a:hover, .priv{
+  text-decoration: none;
+}
+
+a:hover, .term{
+  text-decoration: none; 
+}
+
+.foot{
+  margin-left: 40px;
+}
+
+.fooot{
+  margin-top: 15px;
+}
+
+/**/
+.form{
+  width: 50%;
+}
+
+/* 
+body{
+  height: 100vh;
+}
+*/
+

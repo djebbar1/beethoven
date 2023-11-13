@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MusicController!{% endblock %}
+
+{% block content %}
+
+  
+        
+          
+    <link href="{{ asset('assets/js/music.js') }}" rel="stylesheet"> 
+    <link href="{{ asset('assets/css/music.css') }}" rel="stylesheet"> 
+ <swiper-container class="mySwiper" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
+    slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100"
+    coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true">
+    
+    
+    {% for musics in music %}
+
+    <swiper-slide>
+
+      <div>
+            <img src=" /uploads/image/{{musics.image}}" height="250px" width="250px" alt=""><br/>
+        <figure>
+            <figcaption class=" mb-1">
+                <div class="heart">
+                    {% if app.user is not null %}
+                    {% for favorite in musics.favorite %} 
+                    {% if favorite.id == app.user.id %}
+                        <a href="{{ path('delete_favoris', {'id': musics.id}) }}"><i class="fa-solid fa-heart"></i></a>
+                    {% else %}
+                        <a href="{{ path('delete_favoris', {'id': musics.id}) }}"><i class="fa-regular fa-heart"></i></a>
+                    {% endif %}
+                    {% else %}
+                        <a href="{{ path('ajout_favoris', {'id': musics.id}) }}"><i class="fa-regular fa-heart"></i></a>
+                {% endfor %}
+                {% endif %}
+                </div>
+               
+                    Catégories: {{musics.categorie}}<br/>         
+                    Chanteur: {{musics.title}}<br/>
+                    Titre: {{musics.singer}}<br/>         
+            </figcaption>
+            <audio class="" controls
+                preload="auto" src="/uploads/song/{{musics.song}}"><a href="/uploads/song/{{musics.song}}"></a>
+            </audio>
+        </figure>
+        </div>
+    </swiper-slide>
+    {% endfor %} 
+  </swiper-container>
+{% endblock %}

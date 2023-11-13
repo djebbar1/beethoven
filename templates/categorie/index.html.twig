@@ -4,50 +4,85 @@
 
 {% block content %}
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
 
+<link href="{{ asset('assets/js/categorie.js') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/categorie.css') }}" rel="stylesheet">
+        
 
         <!-- START THE FEATURETTES -->
+       
 
+        <h1>Nos Catégories</h1>
         <hr class="featurette-divider">
 
+        {% for musics in music %}
+       
+        <div id="featuret" class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading mt-3"> Chanteur: {{musics.title}} <br/><span class="text-muted mt-4">Titre: {{musics.singer}}</span></h2>
+               {% for categories in musics %}
         
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading mt-3">Musiques afro-américaines. <br/><span class="text-muted mt-4">Un style qui fait bougé votre corps...</span></h2>
-                <p class="lead mt-3">blues, gospel, jazz, r'n'b, rap, hip-hop, reggae… </p>
+
+               
+                <p class="lead mt-3">Catégories: {{categories.name}} 
+                </p>
+               
+                {% endfor %}
+                <audio class="" controls
+                preload="auto" src="/uploads/song/{{musics.song}}"><a href="/uploads/song/{{musics.song}}"></a>
+            </audio>
+                
             </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="../assets/image_site/afro.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+            <div class="col-md-5 order-md-1">
+                <img src=" /uploads/image/{{musics.image}}" height="250px" width="250px" alt="">
+                <rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+
             </div>
         </div>
 
         <hr class="featurette-divider">
+      
+    
+   
+  
+       
+        {% endfor %} 
+     
+        <!--<div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading mt-3">Musiques afro-américaines. <br/><span class="text-muted mt-4">Un style qui fait bougé votre corps...</span></h2>
+                <p class="lead mt-3">blues, gospel, jazz, r'n'b, rap, hip-hop, reggae… Catégories: <br/>         
+                    Chanteur: <br/>
+                    Titre: <br/></p>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
+            </div>
+            <figure>
+                <figcaption class=" mb-1">
+                    <div class="heart">
+                        <a href="#"><i onclick()="" class="fa-solid fa-heart"></i></a>
+                    </div>
+                        Catégories:<br/>         
+                        Chanteur: <br/>
+                        Titre: <br/>         
+                </figcaption>
+                <audio class=""
+                    controls
+                    preload="auto"
+                    src="/uploads/song/"></audio>
+                        <a href="/uploads/song/"></audio></a>
+                </audio>
+            </figure>
+        </div>
 
-        <div class="row featurette">
+        <hr class="featurette-divider">
+        -->
+        
+    <!--        <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading mt-3">Rock et variétés internationales. <br/><span class="text-muted mt-4">Un style de musique plus violentes</span></h2>
-                <p class="lead mt-3">rock, pop, folk, metal, punk, new wave....</p>
+                <p class="lead mt-3">rock, pop, folk, metal, punk, new wave....    </p>
             </div>
             <div class="col-md-5 order-md-1">
                 <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="../assets/image_site/rock.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
@@ -55,8 +90,8 @@
         </div>
 
         <hr class="featurette-divider">
-
-        <div class="row featurette">
+ 
+   <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading mt-3">Musique classique.<br/><span class="text-muted mt-4">Le style qui calme l'esprit.</span></h2>
                 <p class="lead mt-3">l'opéra, la symphonie, la sonate, le quatuor à cordes et le concerto</p>
@@ -77,14 +112,12 @@
                 <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="../assets/image_site/techno.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
             </div>
         </div>
+    
+    -->
 
         <hr class="featurette-divider">
+    
 
         <!-- /END THE FEATURETTES -->
-
-
-
-<h1>Nos Catégories</h1>
-
 
 {% endblock %}
